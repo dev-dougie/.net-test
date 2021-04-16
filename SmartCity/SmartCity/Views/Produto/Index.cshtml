@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SmartCity.Models.Produto>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ } 
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Produtos</title>
+</head>
+<body>
+    <table class="table" border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <label>@item.ProductName</label>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+</html>

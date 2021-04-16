@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SmartCity.Models.TipoProduto>
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+    <head>
+        <meta name ="viewport" content="width=device-width"/>
+        <title>Index</title>
+    </head>
+    <body>
+        <div>
+            <h2>Tipos de produto</h2>
+            <p><a asp-controller="TipoProduto" asp-action="Cadastrar">Novo tipo</a></p>
+        </div>
+        @if (@TempData["sucesso"] != null)
+            {
+                <div class=" alert alert-success" role="alert">
+                    @TempData["sucesso"]
+                </div>
+            } 
+        <table class ="table" border="1">
+            <tr>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+            @foreach (var item in Model) { 
+                <tr>
+                    <td>
+                        <label>@item.Id</label>
+                    </td>
+                    <td>
+                        <label>@item.Description</label>
+                    </td>
+                    <td>
+                        <a asp-controller="TipoProduto" asp-action="Editar" asp-route-id ="@item.Id" class="btn-outline-info">Editar</a>
+                        <a asp-controller="TipoProduto" asp-action="Consultar" asp-route-id ="@item.Id" class="btn-outline-primary">Consultar</a>
+                        <a asp-controller="TipoProduto" asp-action="Excluir" asp-route-id ="@item.Id" class="btn-outline-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </body>
+</html>
